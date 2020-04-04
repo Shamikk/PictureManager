@@ -8,6 +8,7 @@
         PNG = 3,
         GIF = 4,
         BMP = 5,
-        SVG = 6
+        SVG = 6,
+        FOO = 20,
     }
 }   

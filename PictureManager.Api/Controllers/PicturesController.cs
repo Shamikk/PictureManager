@@ -76,18 +76,21 @@ namespace PictureManager.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Picture>> PostPicture(Picture picture)
         {
-            if ((int)picture.FileType <= 6 && (int)picture.FileType >= 0)
-            {
-                _context.Pictures.Add(picture);
-                await _context.SaveChangesAsync();
-                return CreatedAtAction("GetPicture", new { id = picture.Id }, picture);
-            }
-            else
-            {
-                return BadRequest("Wrong file type");
-            }
+            var lastValue = Enum.GetValues(typeof(FileType)).Cast<FileType>().Last();
+            var firstValue = Enum.GetValues(typeof(FileType)).Cast<FileType>().First();
 
-            //var lastFoo = Enum.GetValues(typeof(Foo)).Cast<Foo>().Last();
+            var values = Enum.GetValues(typeof(FileType)).Cast<FileType>();
+
+            foreach (var val in values)
+            {
+                if (picture.FileType == val)
+                {
+                    _context.Pictures.Add(picture);
+                    await _context.SaveChangesAsync();
+                    return CreatedAtAction("GetPicture", new { id = picture.Id }, picture);
+                }
+            }
+            return BadRequest("Wrong file type");
         }
 
         // DELETE: api/Pictures/5
