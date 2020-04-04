@@ -7,6 +7,10 @@ namespace PictureManager.BLL
 {
     public class Picture
     {
+        public Picture()
+        {
+
+        }
         public Picture(string sourceFilePath)
         {
             var fileInfo = new FileInfo(sourceFilePath);
