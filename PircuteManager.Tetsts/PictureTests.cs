@@ -13,7 +13,7 @@ namespace PircuteManager.Tetsts
             // Arrange
 
             // Act
-            var picture = new Picture("d:\\img1.jpg");
+            var picture = new Picture("c:\\image.jpg");
             // Assert
             Assert.AreEqual(FileType.JPG, picture.FileType);
         }
@@ -24,7 +24,7 @@ namespace PircuteManager.Tetsts
             // Arrange
 
             // Act
-            var picture = new Picture("d:\\img1.bla");
+            var picture = new Picture("c:\\image.bla");
             // Assert
             Assert.AreEqual(FileType.UNDEFINED, picture.FileType);
         }
@@ -35,7 +35,7 @@ namespace PircuteManager.Tetsts
             // Arrange
 
             // Act
-            var picture = new Picture("d:\\img1.jpg");
+            var picture = new Picture("c:\\image.jpg");
             // Assert
             Assert.AreEqual("img1", picture.Name);
         }
@@ -46,7 +46,7 @@ namespace PircuteManager.Tetsts
             // Arrange
 
             // Act
-            var picture = new Picture("d:\\img1.jpg");
+            var picture = new Picture("c:\\image.jpg");
             // Assert
             Assert.AreEqual("img1", picture.Name);
         }
