@@ -10,7 +10,7 @@ namespace PictureManager.BLL
         public Picture(string sourceFilePath)
         {
             var fileInfo = new FileInfo(sourceFilePath);
-            Name = fileInfo.Name;
+            Name = GetFileNameWithoutExtension(fileInfo);
             FileSize = fileInfo.Length;
             FileType = GetFileTypeByExtension(fileInfo.Extension);
         }
@@ -23,7 +23,8 @@ namespace PictureManager.BLL
 
         private FileType GetFileTypeByExtension(string extension)
         {
-            var ext = extension.ToLower();
+
+            var ext = extension.Replace(".", "").ToLower();
 
             if (ext == "jpg")
             {
@@ -54,13 +55,15 @@ namespace PictureManager.BLL
                 return FileType.UNDEFINED;
             }
         }
-    }
 
-    public class Test
-    {
-        public void CreatePicture()
+        private string GetFileNameWithoutExtension(FileInfo fileInfo)
         {
-            var picture = new Picture("c:\\image.jpg");
+            if (fileInfo == null)
+            {
+                throw new FileNotFoundException();
+            }
+
+            return fileInfo.Name.Replace(fileInfo.Extension, "");
         }
     }
 }
