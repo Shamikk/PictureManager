@@ -8,10 +8,7 @@ namespace PictureManager.DAL
 {
     public class PictureManagerDBContext : DbContext
     {
-        public PictureManagerDBContext()
-        {
-
-        }
+        
         public PictureManagerDBContext(DbContextOptions<PictureManagerDBContext> options) : base(options)
         {
 

@@ -32,6 +32,7 @@ namespace PictureManager.Api
             {
                 options.UseSqlServer(Configuration.GetSection("ConnectionStrings")["PictureDbConnString"]);
             });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +50,7 @@ namespace PictureManager.Api
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseSwagger();
         }
     }
 }
